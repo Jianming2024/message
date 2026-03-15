@@ -87,7 +87,7 @@ jobs:
           host: ${{ vars.STAGING_SERVER_IP }}
           username: ${{ vars.STAGING_SERVER_USERNAME }}
           key: ${{ secrets.STAGING_SERVER_SSH_KEY }}
-          source: "docker-compose.staging.yml"
+          source: "server/docker-compose.staging.yml"
           target: "message/"
 
       - name: Run Docker Compose on staging server
@@ -116,7 +116,7 @@ jobs:
           host: ${{ vars.PROD_SERVER_IP }}
           username: ${{ vars.PROD_SERVER_USERNAME }}
           key: ${{ secrets.PROD_SERVER_SSH_KEY }}
-          source: "docker-compose.prod.yml"
+          source: "server/docker-compose.prod.yml"
           target: "message/"
 
       - name: Run Docker Compose on production server
