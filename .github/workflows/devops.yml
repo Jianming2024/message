@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: {}
 
 jobs:
   delivery:
@@ -89,6 +90,7 @@ jobs:
           key: ${{ secrets.STAGING_SERVER_SSH_KEY }}
           source: "server/docker-compose.staging.yml"
           target: "message/"
+          strip_components: 1
 
       - name: Run Docker Compose on staging server
         uses: appleboy/ssh-action@v1.2.1
@@ -118,6 +120,7 @@ jobs:
           key: ${{ secrets.PROD_SERVER_SSH_KEY }}
           source: "server/docker-compose.prod.yml"
           target: "message/"
+          strip_components: 1
 
       - name: Run Docker Compose on production server
         uses: appleboy/ssh-action@v1.2.1
