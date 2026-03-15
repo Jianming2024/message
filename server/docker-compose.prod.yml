@@ -1,7 +1,7 @@
 services:
   api:
-    image: ghcr.io/jianming2024/livechat-server:staging
-    container_name: livechat-api
+    image: ghcr.io/jianming2024/message-server:staging
+    container_name: message-api
     ports:
       - "5005:5005"
     environment:
@@ -14,8 +14,8 @@ services:
     restart: unless-stopped
 
   client:
-    image: ghcr.io/jianming2024/livechat-client:staging
-    container_name: livechat-client
+    image: ghcr.io/jianming2024/message-client:staging
+    container_name: message-client
     ports:
       - "3000:80"
     depends_on:
@@ -24,7 +24,7 @@ services:
 
   db:
     image: postgres:17-alpine
-    container_name: livechat-db
+    container_name: message-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -40,7 +40,7 @@ services:
 
   redis:
     image: redis:alpine
-    container_name: livechat-redis
+    container_name: message-redis
     restart: unless-stopped
 
 volumes:
